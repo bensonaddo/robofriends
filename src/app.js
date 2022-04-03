@@ -1,8 +1,8 @@
 import React,{ Component } from "react";
 import CardList from "./cardlist";
-import SearchBox from "./searchbox"
-import { robots } from "./robots";
-import "./app.css"
+import SearchBox from "./searchbox";
+import Scroll from "./scroll";
+import "./app.css";
 
 // Smart Components with state
 class App extends Component{
@@ -35,7 +35,9 @@ class App extends Component{
                 <div className="tc">
                     <h1 className="f1">RoboFriends</h1>
                     <SearchBox searchChange={this.onSearchChange}/>
-                    <CardList robots={ filterRobots }/>
+                    <Scroll>
+                        <CardList robots={ filterRobots }/>
+                    </Scroll>
                 </div>
             );
         }
