@@ -2,15 +2,23 @@ import React,{ Component } from "react";
 import CardList from "./cardlist";
 import SearchBox from "./searchbox"
 import { robots } from "./robots";
+import "./app.css"
 
-
+// Smart Components with state
 class App extends Component{
     constructor(){
         super();
         this.state = {
-            robots: robots,
+            //robots: robots,// Empty components
+            robots: [],
             searchfield: ''
         }
+    }
+
+    componentDidMount(){
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then(response => response.json())
+            .then(users => this.setState({ robots: users}))
     }
     onSearchChange = (event) => {
         // console.log(event.target.value);
@@ -22,7 +30,7 @@ class App extends Component{
         });
         return(
             <div className="tc">
-                <h1>RoboFriends</h1>
+                <h1 className="f1">RoboFriends</h1>
                 <SearchBox searchChange={this.onSearchChange}/>
                 <CardList robots={ filterRobots }/>
             </div>
