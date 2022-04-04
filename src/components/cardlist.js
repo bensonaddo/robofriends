@@ -7,6 +7,9 @@ const CardList = ({ robots }) => {
         <div>
             {
             robots.map((user,i) => {
+                if (true){
+                    throw new Error("Nooooooo!");
+                }
                 return (
                     <Card 
                         key={i} 

@@ -2,6 +2,7 @@ import React,{ Component } from "react";
 import CardList from "../components/cardlist";
 import SearchBox from "../components/searchbox";
 import Scroll from "../components/scroll";
+import ErrorBoundry from "../components/errorboundry";
 import "./app.css";
 
 // Smart Components with state
@@ -36,7 +37,9 @@ class App extends Component{
                     <h1 className="f1">RoboFriends</h1>
                     <SearchBox searchChange={this.onSearchChange}/>
                     <Scroll>
-                        <CardList robots={ filterRobots }/>
+                        <ErrorBoundry>
+                            <CardList robots={ filterRobots }/>
+                        </ErrorBoundry>
                     </Scroll>
                 </div>
             );
